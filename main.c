@@ -1,33 +1,31 @@
-//#include<iostream>
 #include<stdio.h>
 #include <string.h>
-//using namespace std;
 
 int getLength(char arr[256]);
 void copy(char a[],char m[]);
 void subtract(char m[],char n[]);
 void arrange(char m[],int len);
 void half(char a[]);
-void multify(int times,char n[]);//¥ı§â­n¥Îªº¨ç¼Æ¥ı«Å§i 
+void multify(int times,char n[]);//å…ˆæŠŠè¦ç”¨çš„å‡½æ•¸å…ˆå®£å‘Š 
 
 int main()
 {
-	char a[256]={},b[256]={},m[256]={},n[256]={};//¤@®æ¥u¶Ç¤@­Ó­È ,¤ñint¦n¥Î ,³Ì¦h¥u¦³256¦ì¼Æ ,¥ı­qªÅ¦ì,¤£µM·|¶Ã¼Æ 
+	char a[256]={},b[256]={},m[256]={},n[256]={};//ä¸€æ ¼åªå‚³ä¸€å€‹å€¼ ,æ¯”intå¥½ç”¨ ,æœ€å¤šåªæœ‰256ä½æ•¸ ,å…ˆè¨‚ç©ºä½,ä¸ç„¶æœƒäº‚æ•¸ 
 	int ans =1,mLength,nLength;
 	
-	scanf("%s",a);//¿é¤J¤]ÅÜ³Â·Ğ ,¬İ±¡ªp¨M©w­n¤£­n¥Î& ,ÁÙ¦³ª`·N³Ì¤j¦ì¼Æ¦b²Ä¤@­Óa[0]³B 
+	scanf("%s",a);//è¼¸å…¥ä¹Ÿè®Šéº»ç…© ,çœ‹æƒ…æ³æ±ºå®šè¦ä¸è¦ç”¨& ,é‚„æœ‰æ³¨æ„æœ€å¤§ä½æ•¸åœ¨ç¬¬ä¸€å€‹a[0]è™• 
 	scanf("%s",b);
 	
 	/*int i=0;
-	while(a[i]) //output§Ş³N 
+	while(a[i]) //outputæŠ€è¡“ 
 	{
 		printf("%d",(int)a[i]-48);ascii code
 		i++;
 	}*/
 	
 	
-	//§â¤jªºµ¹m,¤pªºµ¹n 
-	if(getLength(a)>getLength(b))//¥ı¤ñ¦ì¼Æ¤j¤p 
+	//æŠŠå¤§çš„çµ¦m,å°çš„çµ¦n 
+	if(getLength(a)>getLength(b))//å…ˆæ¯”ä½æ•¸å¤§å° 
 	{
 		copy(a,m);
 		copy(b,n);
@@ -37,7 +35,7 @@ int main()
 		copy(b,m);
 		copy(a,n);
 	}
-	else//¦ì¼Æ¬Û¦P´N¥u¯à¦Ñ¹ê¤ñ 
+	else//ä½æ•¸ç›¸åŒå°±åªèƒ½è€å¯¦æ¯” 
 	{
 		int i=0;
 		while(a[i])
@@ -45,7 +43,7 @@ int main()
 			if((int)a[i]>(int)b[i])
 			{ copy(a,m);
 		      copy(b,n);
-		      break;//§Y¨Ï¸õ¥X°j°é¬Ù®É¶¡ 
+		      break;//è·³å‡ºè¿´åœˆçœæ™‚é–“ 
 				
 			}
 			if((int)a[i]<(int)b[i])
@@ -61,7 +59,7 @@ int main()
 
 	  
 	
-	//¶}©l§ä¤½¦]¼Æ 
+	//é–‹å§‹æ‰¾å…¬å› æ•¸ 
 	while((int)m[0]-48>0 && (int)n[0]-48>0) 
 	{
 		mLength = getLength(m);
@@ -79,7 +77,7 @@ int main()
 		else if(nEnd%2==0)half(n);
 		else if(mEnd%2==0)half(m); 
 		
-		//¦pªGn¸û¤j´N¥æ´«
+		//å¦‚æœnè¼ƒå¤§å°±äº¤æ›
 		mLength = getLength(m);
 		nLength = getLength(n);
 		if(nLength>mLength) 
@@ -87,7 +85,7 @@ int main()
 			char temp[256]={};
 			copy(m,temp);
 			copy(n,m);
-			memset(n, (char)(0), 256);//string.h,§ân¥şÂk¹s,¤£µMcopyªº¸Ü,¦]¬°n¦ì¼Æ¦h,µLªk¥Î¨ìnªº§À¤Ú 
+			memset(n, (char)(0), 256);//string.h,æŠŠnå…¨æ­¸é›¶,ä¸ç„¶copyçš„è©±,å› ç‚ºnä½æ•¸å¤š,ç„¡æ³•ç”¨åˆ°nçš„å°¾å·´ 
 			copy(temp,n);
 		}
 		else if(nLength==mLength)
@@ -101,14 +99,14 @@ int main()
 					char temp[256]={};
 			        copy(m,temp);
 			        copy(n,m);
-			        memset(n, (char)(0), 256);//Âk0¤£¬O'0' 
+			        memset(n, (char)(0), 256);//æ­¸0ä¸æ˜¯'0' 
 			        copy(temp,n);
 			        break;
 				
 				  
 				}
 				
-				if((int)m[i]>(int)n[i])//©ñ¦b¤U­±,¦pªG©ñ¦¨²Ä¤@­Óif,·|¸õ¨ì¤U­Óif¤º,loop¸õ¤£¥X 
+				if((int)m[i]>(int)n[i])//æ”¾åœ¨ä¸‹é¢,å¦‚æœæ”¾æˆç¬¬ä¸€å€‹if,æœƒè·³åˆ°ä¸‹å€‹ifå…§,loopè·³ä¸å‡º 
 				    break;
 								
 				
@@ -129,23 +127,23 @@ int main()
 }
 
 
-/////////////////  ¥\¯à¨ç¼Æ      ////////////////////////
+/////////////////  åŠŸèƒ½å‡½æ•¸      ////////////////////////
 
 int getLength(char arr[256])
 {
 	int i=0;
-	while((int)arr[i]-48>=0)i++;//¥u­n¬O0~9³£·|²Å¦X,¦pªG¬O¹w³]ªº0·|ÅÜ¦¨-48 
-	return i;//ª`·N¤£¥Î+1,¦]¬°°²³]¨ì 
+	while((int)arr[i]-48>=0)i++;//åªè¦æ˜¯0~9éƒ½æœƒç¬¦åˆ,å¦‚æœæ˜¯é è¨­çš„0æœƒè®Šæˆ-48 
+	return i;//æ³¨æ„ä¸ç”¨+1,å› ç‚ºå‡è¨­åˆ° 
 }
-void arrange(char m[],int len)//±Æ¦C,§â¾ã­Ó¦C©¹«e®¿,¤]³\¥Î¦¨queue¸û¦n 
+void arrange(char m[],int len)//æ’åˆ—,æŠŠæ•´å€‹åˆ—å¾€å‰æŒª
 {
 	
 	for(int i=0;i<len-1;i++ )m[i]=m[i+1];
 	if(len<256)m[len-1]=m[len];
-	else m[255] = (char)(0);//ª`·Nchar 0©M'0'¬O¤£¦Pªº,char 0ªºascill code =0,¦©-48 =-48 
+	else m[255] = (char)(0);//æ³¨æ„char 0å’Œ'0'æ˜¯ä¸åŒçš„,char 0çš„ascill code =0,æ‰£-48 =-48 
 	
 }
-void copy(char a[],char m[])//array¥»¨­´N¬O«ü¼Ğ,©Ò¥H·|§ï°Ê 
+void copy(char a[],char m[])//arrayæœ¬èº«å°±æ˜¯æŒ‡æ¨™,æ‰€ä»¥æœƒæ”¹å‹• 
 {	int i=0;
 	while(a[i]){
 	m[i]=a[i];
@@ -161,7 +159,7 @@ void subtract(char m[],char n[])//m = m-n
 	int i = mLen - 1;
 	int j = nLen - 1;
 	int down=0;
-	int nVal =0;//¥Î¨ÓÀ³¥Im¦ì¼Æ¤j¹Ln¨â¦ì¥H¤W
+	int nVal =0;//ç”¨ä¾†æ‡‰ä»˜mä½æ•¸å¤§énå…©ä½ä»¥ä¸Š
 	while(i >= 0)
 	{
 		if(j>=0)
@@ -178,7 +176,7 @@ void subtract(char m[],char n[])//m = m-n
 		 }
 		 else
 		 {
-			m[i] = (char)((int)m[i] + 10 - nVal -down + 48);//¥[´îªk,±q«e­±­n10
+			m[i] = (char)((int)m[i] + 10 - nVal -down + 48);//åŠ æ¸›æ³•,å¾å‰é¢è¦10
 			down =1;
 			//m[i - 1] = (char)((int)m[i - 1] - 1 );if pre is 0 
 		 }
@@ -195,7 +193,7 @@ void subtract(char m[],char n[])//m = m-n
 	
 } 
 
-void half(char a[])//°£¥H2
+void half(char a[])//é™¤ä»¥2
 {
 
    int len = getLength(a);
@@ -218,16 +216,16 @@ void half(char a[])//°£¥H2
 void multify(int times,char n[])
 {
 	int len = getLength(n),length=0;
-	int upNow=0,upPre=0;//¶i¦ì 
+	int upNow=0,upPre=0;//é€²ä½ 
 	if(len<10)
 	{
 	  for(int i=len;i>0;i--)
-	    n[i]=n[i-1];//¥ı©¹«á²¾,§â­º¦ìªÅ¥X¨Ó¶i¦ì
-	  n[0] = '0';//­º¦ì¸É0 
+	    n[i]=n[i-1];//å…ˆå¾€å¾Œç§»,æŠŠé¦–ä½ç©ºå‡ºä¾†é€²ä½
+	  n[0] = '0';//é¦–ä½è£œ0 
 	  length =len;
 	  
 	} 
-	if(len==10) length=len-1;//¦h¥Îlength¬O¦]¬°¦pªG¥u¥Îlen,len-1ªº¸Ü,arrarnge·|¿ù¶Ã 
+	if(len==10) length=len-1;//å¤šç”¨lengthæ˜¯å› ç‚ºå¦‚æœåªç”¨len,len-1çš„è©±,arrarngeæœƒéŒ¯äº‚ 
 	
 	for(int i=length;i>=0;i--)
     {
@@ -245,7 +243,7 @@ void multify(int times,char n[])
 	   else
 	   {
 	   	 n[i] = (char)( upNow%10+48);
-	   	 upPre =0;//¦]¬°¨S¶i¦ì
+	   	 upPre =0;//å› ç‚ºæ²’é€²ä½
 	   }
    	
    	
@@ -255,7 +253,7 @@ void multify(int times,char n[])
 	
 
    
-   while((int)n[0] - 48==0)//Á×§K­º¦ì0 
+   while((int)n[0] - 48==0)//é¿å…é¦–ä½0 
    {
 		arrange(n,len+1);
 		
