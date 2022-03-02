@@ -1,1 +1,2 @@
-# Practicing Git
+# 2022DSA HW0 第一題
+大數字的公因數分解
