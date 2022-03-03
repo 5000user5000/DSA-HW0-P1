@@ -81,7 +81,7 @@ int main()
 		nLength = getLength(n);
 		if(nLength>mLength) 
 		{
-			char temp[257]={};
+			char temp[257]={0};//忘補0
 			copy(m,temp);
 			copy(n,m);
 			memset(n, (char)(0), 257);//string.h,把n全歸零,不然copy的話,因為n位數多,無法用到n的尾巴 
