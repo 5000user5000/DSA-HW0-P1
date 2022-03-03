@@ -81,7 +81,7 @@ int main()
 		nLength = getLength(n);
 		if(nLength>mLength) 
 		{
-			char temp[257]={0};//忘補0
+			char temp[257]={0};//忘記補0了 
 			copy(m,temp);
 			copy(n,m);
 			memset(n, (char)(0), 257);//string.h,把n全歸零,不然copy的話,因為n位數多,無法用到n的尾巴 
@@ -95,7 +95,7 @@ int main()
 				
 				if((int)n[i]>(int)m[i])
 				{
-					char temp[257]={};
+					char temp[257]={0};//忘記補0了
 			        copy(m,temp);
 			        copy(n,m);
 			        memset(n, (char)(0), 257);//歸0不是'0' 
@@ -105,7 +105,7 @@ int main()
 				  
 				}
 				
-				if((int)m[i]>(int)n[i])//放在下面,如果放成第一個if,會跳到下個if內,loop跳不出 
+				else if((int)m[i]>(int)n[i])//放在下面,如果放成第一個if,會跳到下個if內,loop跳不出 
 				    break;
 								
 				
@@ -219,13 +219,20 @@ void multify(int times,char n[])
 {
 	int len = getLength(n),length=0;
 	int upNow=0,upPre=0;//進位 
+	int times_len = 0,times2=times;//紀錄倍數的長度 
+	
+	while(times2>0)
+	{
+		times2/=10;
+		times_len++;
+	}
+	
 	 
-	for(int i=len;i>0;i--)
-	     n[i]=n[i-1];//先往後移,把首位空出來進位
+	for(int i=len+times_len-1;i>0;i--)
+	     n[i]=n[i-1];//先往後移,把首位空出來進位,error 不應只退一格,如132*245就要退兩格,保守應該退ans的長度 
 	n[0] = '0';//首位補0 
 	length =len;
 	
-	//if(len==10) length=len-1;//多用length是因為如果只用len,len-1的話,arrarnge會錯亂 
 	
 	for(int i=length;i>=0;i--)
     {
