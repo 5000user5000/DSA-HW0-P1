@@ -228,13 +228,14 @@ void multify(int times,char n[])
 	}
 	
 	 
-	for(int i=len+times_len-1;i>0;i--)
-	     n[i]=n[i-1];//先往後移,把首位空出來進位,error 不應只退一格,如132*245就要退兩格,保守應該退ans的長度 
-	n[0] = '0';//首位補0 
-	length =len;
+	for(int i=len+times_len-1;i>times_len-1;i--)
+	  {   n[i]=n[i-times_len];//先往後移,把首位空出來進位,error 不應只退一格,如132*245就要退兩格,保守應該退ans的長度 
+	      n[i-times_len] = '0';//挪完就改成0 
+	 } 
+	//length =len;
 	
 	
-	for(int i=length;i>=0;i--)
+	for(int i=len+times_len-1;i>=0;i--)
     {
        upNow =  ( ((int)n[i] - 48)*times +upPre);
 	    
@@ -262,7 +263,7 @@ void multify(int times,char n[])
    
    while((int)n[0] - 48==0)//避免首位0 
    {
-		arrange(n,length+1);
+		arrange(n,len+times_len);
 		
 	}
 	
